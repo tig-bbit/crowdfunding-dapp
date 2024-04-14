@@ -11,9 +11,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 const DB = process.env.MONGODB_URI;
+const corsOrigin = process.env.CORS_ORIGIN;
 
 const corsOptions = {
-  origin: "*",
+  origin: corsOrigin ? corsOrigin : "*",
   credentials: true,
 };
 
