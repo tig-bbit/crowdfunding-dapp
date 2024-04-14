@@ -46,23 +46,24 @@ exports.login = async (req, res, next) => {
 
   // Check if email and password exist
   if (!email || !password) {
-    res.status(400).json({
+    return res.status(400).json({
       status: "fail",
       message: "Please provide email and password",
     });
-  }
-  // Check if user exists && password is correct
-  const user = await User.findOne({ email }).select("+password");
+  } else {
+    // Check if user exists && password is correct
+    const user = await User.findOne({ email }).select("+password");
 
-  if (!user || !(await user.correctPassword(password, user.password))) {
-    res.status(401).json({
-      status: "fail",
-      message: "Incorrect email or password",
-    });
+    if (!user || !(await user.correctPassword(password, user.password))) {
+      return res.status(401).json({
+        status: "fail",
+        message: "Incorrect email or password",
+      });
+    } else {
+      // If everything ok, send token to client
+      createSendToken(user, 200, req, res);
+    }
   }
-
-  // If everything ok, send token to client
-  createSendToken(user, 200, req, res);
 };
 
 exports.getUsers = async (req, res, next) => {
