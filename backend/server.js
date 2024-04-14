@@ -13,14 +13,14 @@ const port = process.env.PORT || 3000;
 const DB = process.env.MONGODB_URI;
 const corsOrigin = process.env.CORS_ORIGIN;
 
-// const corsOptions = {
-//   origin: corsOrigin ? corsOrigin : "*",
-//   credentials: true,
-// };
+const corsOptions = {
+  origin: corsOrigin ? corsOrigin : "*",
+  credentials: true,
+};
 
 // Middleware
 app.use(express.json({ limit: "100kb" }));
-app.use(cors({}));
+app.use(cors(corsOptions));
 app.options("*", cors());
 
 // Routes
