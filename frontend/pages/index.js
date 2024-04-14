@@ -49,7 +49,6 @@ const Index = () => {
       setAllImages(images);
 
       const apiImages = await getAllNftsAPI();
-      // console.log("apiImages", apiImages);
     } catch (error) {
       console.log("error en la carga de imagenes", error);
     }
@@ -88,7 +87,7 @@ const Index = () => {
     setLoading(true);
     if (file) {
       try {
-        setNotification("Uploading file..."); 
+        setNotification("Uploading file...");
         const formData = new FormData();
         formData.append("file", file);
 
@@ -114,7 +113,7 @@ const Index = () => {
       } catch (error) {
         console.log(error);
         setLoading(false);
-        setNotification("Error uploading file!"); 
+        setNotification("Error uploading file!");
       }
     }
     setFile(null);
