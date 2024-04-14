@@ -4,6 +4,8 @@ import { FormSVG, Lock } from "../SVG/index";
 import Style from "./SignUp.module.css";
 import { Notification } from "../index";
 
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
   const [user, setUser] = useState({
     name: "",
@@ -30,7 +32,9 @@ const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
     try {
       const response = await axios({
         method: "POST",
-        url: `https://d-crowdfunding-backend.onrender.com/api/v1/user/signup`,
+        url: `${
+          NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+        }/api/v1/user/signup`,
         withCredentials: true,
         data: {
           name: user.name,
@@ -121,7 +125,10 @@ const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
 
       {/* NOTIFICATION */}
       {notification != "" && (
-        <Notification notification={notification} setNotification={setNotification} />
+        <Notification
+          notification={notification}
+          setNotification={setNotification}
+        />
       )}
     </>
   );

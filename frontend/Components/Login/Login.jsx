@@ -3,6 +3,9 @@ import axios from "axios";
 import { FormSVG, Lock } from "../SVG/index";
 import Style from "./Login.module.css";
 import { Notification } from "../index";
+
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const Login = ({ setNotification, notification, setLogin, setSignup }) => {
   const [user, setUser] = useState({
     email: "",
@@ -20,12 +23,14 @@ const Login = ({ setNotification, notification, setLogin, setSignup }) => {
     if (user.email == "" || user.password == "") {
       return setNotification("Please provide email and password");
     }
-    setNotification("Please wait, you are being logged in")
+    setNotification("Please wait, you are being logged in");
     try {
       setLoading("Loading...");
       const response = await axios({
         method: "POST",
-        url: `https://d-crowdfunding-backend.onrender.com/api/v1/user/login`,
+        url: `${
+          NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+        }/api/v1/user/login`,
         withCredentials: true,
         data: {
           email: user.email,

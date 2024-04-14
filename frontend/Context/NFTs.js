@@ -11,6 +11,8 @@ import axios from "axios";
 
 const StateContext = createContext();
 
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export const StateContextProvider = ({ children }) => {
   const { contract } = useContract(
     "0xF2a64f42Fa8e1b4B9aF2A0Ba7Cf1C59527976f6D"
@@ -57,7 +59,9 @@ export const StateContextProvider = ({ children }) => {
 
       const response = await axios({
         method: "POST",
-        url: `https://d-crowdfunding-backend.onrender.com/api/v1/nfts/create`,
+        url: `${
+          NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+        }/api/v1/nfts/create`,
         data: {
           title: title,
           description: description,
@@ -141,7 +145,9 @@ export const StateContextProvider = ({ children }) => {
   const getAllNftsAPI = async () => {
     const response = await axios({
       method: "GET",
-      url: "https://d-crowdfunding-backend.onrender.com/api/v1/nfts",
+      url: `${
+        NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+      }/api/v1/nfts`,
     });
     // console.log("getAllNftsAPI", response);
     return response;
@@ -150,7 +156,9 @@ export const StateContextProvider = ({ children }) => {
   const getSingleNftsAPI = async (id) => {
     const response = await axios({
       method: "GET",
-      url: `https://d-crowdfunding-backend.onrender.com/api/v1/nfts/${id}`,
+      url: `${
+        NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+      }/api/v1/nfts/${id}`,
     });
     // console.log("getSingleNftsAPI", response);
     return response;
