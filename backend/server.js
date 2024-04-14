@@ -6,7 +6,6 @@ const dotenv = require("dotenv");
 const nftRouter = require("./Routers/nftRouter");
 const userRouter = require("./Routers/userRouter");
 
-
 dotenv.config();
 
 const app = express();
@@ -14,7 +13,7 @@ const port = process.env.PORT || 3000;
 const DB = process.env.MONGODB_URI;
 
 const corsOptions = {
-  origin: "https://crowdfunding-dapp-web3.vercel.app",
+  origin: "*",
   credentials: true,
 };
 
@@ -44,4 +43,3 @@ mongoose
   .catch((error) => {
     console.error("DB connection error:", error);
   });
-

@@ -1,5 +1,5 @@
-MONGODB_URI=mongodb+srv://krisato93:worldfinal730@promewizard.d2mmv1s.mongodb.net/crowdfunding-dapp
-PORT=3001
+MONGODB_URI=
+PORT=3000
 
 JWT_SECRET=nft-api-jwt-secret-key-theblockchaincoders-project
 JWT_EXPIRES_IN=50d
