@@ -16,17 +16,21 @@ The back-end of the app utilizes smart contracts deployed on a blockchain networ
 - [MoongoseDB](https://www.mongodb.com/docs/) (Backend Database)
 
 ## Requirements For Initial Setup
+
 - Install [NodeJS](https://nodejs.org/en/)
 
 ## Setting Up
+
 ### 1. Clone/Download the Repository
 
 ### 2. Navigate to the "front" folder and run the following command:
+
 `$ npm install`
 
 ### 3. Start frontend
+
 `$ npm run start`
 
 ## Authors
 
-- [@JjuliSanz ](https://github.com/JjuliSanz)
+- [@J_son ](https://github.com/tig-bbit)
