@@ -17,6 +17,9 @@ import {
 import { useStateContext } from "../Context/NFTs";
 import images from "../Components/Image/client/index";
 
+const NEXT_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const NEXT_PUBLIC_API_SECRET = process.env.NEXT_PUBLIC_API_SECRET;
+
 const Index = () => {
   const {
     address,
@@ -96,8 +99,8 @@ const Index = () => {
           url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
           data: formData,
           headers: {
-            pinata_api_key: `e059cbf3522e6cc22ecb`,
-            pinata_secret_api_key: `106c3b2bc7f8ae38b167190cb5e0827acb0864511613e16b79b31d5f6a5634ae`,
+            pinata_api_key: NEXT_PUBLIC_API_KEY,
+            pinata_secret_api_key: NEXT_PUBLIC_API_SECRET,
             "Content-Type": "multipart/form-data",
           },
         });
