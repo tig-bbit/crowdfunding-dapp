@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Header, Footer, Notification, Logo, Loader } from "../Components";
 import { useStateContext } from "../Context/NFTs";
 
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const Nftsapi = () => {
   const { loading } = useStateContext();
   const [notification, setNotification] = useState("");
@@ -12,35 +14,45 @@ const Nftsapi = () => {
       description:
         "Welcome to NFTs Api, access to all the nfts uploaded to IPFS, by following the mention steps down below",
       method: "GET",
-      endpoint: "http://localhost:3000/api/v1/nfts",
+      endpoint: `${
+        NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+      }/api/v1/nfts`,
     },
     {
       title: "Get Single NFT",
       description:
         "Single NFT Api endpoint, get access to single nft uploaded to IPFS, by following the mention steps down below",
       method: "GET",
-      endpoint: "http://localhost:3000/api/v1/nfts/Id",
+      endpoint: `${
+        NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+      }/api/v1/nfts/Id`,
     },
     {
       title: "Create Image Upload",
       description:
         "This endpoint will allow you to make post request on the server to upload the image",
       method: "POST",
-      endpoint: "http://localhost:3000/api/v1/nfts/create",
+      endpoint: `${
+        NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+      }/api/v1/nfts/create`,
     },
     {
       title: "Login Endpoint",
       description:
         "Allow api user to use the NFTs API authentication to log user in",
       method: "POST",
-      endpoint: "http://localhost:3000/api/v1/user/login",
+      endpoint: `${
+        NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+      }/api/v1/user/login`,
     },
     {
       title: "SignUp Endpoint",
       description:
         "Allow api user to use the NFTs API for creating account to signup user",
       method: "POST",
-      endpoint: "http://localhost:3000/api/v1/user/signup",
+      endpoint: `${
+        NEXT_PUBLIC_API_URL ? NEXT_PUBLIC_API_URL : "http://localhost:3001"
+      }/api/v1/user/signup`,
     },
   ];
   return (
